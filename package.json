@@ -1,0 +1,14 @@
+{
+  "name": "letterboxdnotion",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "sync": "node scripts/sync-letterboxd-to-notion.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "dotenv": "^16.4.5",
+    "node-html-parser": "^6.1.13",
+    "xml2js": "^0.6.2"
+  }
+}
