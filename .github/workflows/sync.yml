@@ -1,0 +1,25 @@
+name: Letterboxd -> Notion Sync
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - run: npm run sync
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          LETTERBOXD_RSS_URL: ${{ secrets.LETTERBOXD_RSS_URL }}
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
